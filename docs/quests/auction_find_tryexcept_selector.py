@@ -35,14 +35,14 @@ for element_item in elements_bundle:
     except:
         pass                                                                                                            # 오류 시 빈칸 입력
     
-    delivery = []
+    delivery_bundle = []
     elements_delivery = element_item.find_elements(by = By.CSS_SELECTOR,value = "div.icon > div > div > span")     # 배송 방법 정보 수집
     for i in range(len(elements_delivery)):
-        delivery.append(elements_delivery[i].text)
-    if len(delivery) > 0:
+        delivery_bundle.append(elements_delivery[i].text)
+    if len(delivery_bundle) > 0:
         print(", delivery : ", end ="")
-        for i in range(len(delivery)):
-            print("{}" .format(delivery[i]), end=" ")                                                                   # 배송 방법 출력 
+        for i in range(len(delivery_bundle)):
+            print("{}" .format(delivery_bundle[i]), end=" ")                                                                   # 배송 방법 출력 
         print("")
     else:
         print("")
