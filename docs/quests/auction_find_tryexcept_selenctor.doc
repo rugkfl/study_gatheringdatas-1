@@ -1,0 +1,23 @@
+상품 item: div.info
+#itembest_T > ul.uxb-img.first > li.first > div > div.info
+
+상품 제목: em > a
+#itembest_T > ul.uxb-img.first > li.first > div > div.info > em > a
+
+판매원가: li.c_price > span
+#itembest_T > ul.uxb-img.first > li.first > div > div.info > ul > li.c_price > span
+
+변경가격: li.d_price > span.sale
+#itembest_T > ul.uxb-img.first > li.first > div > div.info > ul > li.d_price > span.sale
+
+All skill : div.icons.ic_allkill
+#itembest_T > ul:nth-child(5) > li:nth-child(2) > div > div.info > div.icon > div > div.icons.ic_allkill
+
+free_delivery : div.icons.ic_free
+#itembest_T > ul:nth-child(5) > li:nth-child(2) > div > div.info > div.icon > div > div.icons.ic_free
+
+smiledelivery : div.icons.ic_smiledelivery
+#itembest_T > ul:nth-child(5) > li:nth-child(2) > div > div.info > div.icon > div > div.icons.ic_smiledelivery
+
+freebie : iv.icons.ic_freebie
+#itembest_T > ul:nth-child(20) > li:nth-child(3) > div > div.info > div.icon > div > div.icons.ic_freebie
