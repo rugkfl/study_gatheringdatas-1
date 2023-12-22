@@ -8,7 +8,7 @@ from selenium import webdriver
 browser = webdriver.Chrome()                        # - chrome browser 열기
 
 pass
-browser.get("")                                     # - 주소 입력
+browser.get("https://github.com/login")             # - 주소 입력
 
                                                     # - 가능 여부에 대한 OK 받음
 pass
@@ -17,6 +17,13 @@ html = browser.page_source                          # - html 파일 받음(and �
 
 from selenium.webdriver.common.by import By          # - 정보 획득
 # browser.save_screenshot('./formats.png')           
+element_login_field = browser.find_element(by=By.CSS_SELECTOR,value="#login_field")
+element_login_field.send_keys("njh2720@gmail.com")
 
-
+element_password = browser.find_element(by=By.CSS_SELECTOR,value="#password")
+password = input("비밀번호 : ")
+element_password.send_keys(password)
+element_login_button = browser.find_element(by=By.CSS_SELECTOR,value="div > input.btn.btn-primary.btn-block.js-sign-in-button")
+element_login_button.click()
+pass
 browser.quit()                                      # - 브라우저 종료

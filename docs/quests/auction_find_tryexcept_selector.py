@@ -40,15 +40,14 @@ for element_item in elements_bundle:
     for i in range(len(elements_delivery)):
         delivery_bundle.append(elements_delivery[i].text)
     if len(delivery_bundle) > 0:
-        print(", delivery : ", end ="")
-        for i in range(len(delivery_bundle)):
-            print("{}" .format(delivery_bundle[i]), end=" ")                                                                   # 배송 방법 출력 
-        print("")
+        delivery_list = ", ".join(delivery_bundle)
+        print(", delivery : {}".format(delivery_list))                                                             # 배송 방법 출력 
     else:
         print("")
         pass
     pass
    
-
+# delivery = element_delivery.text.split() 이렇게 하면 값이 두개가 되므로 자연스럽게 리스트로 구성됨 
+# delivery_result = ','.join(delivery)    이렇게 하면 리스트 사이에만 ','가 입력됨 
 
 browser.quit()                                      # - 브라우저 종료
