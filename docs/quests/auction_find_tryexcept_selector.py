@@ -19,19 +19,19 @@ for element_item in elements_bundle:
     try:
         elements_title = element_item.find_element(by=By.CSS_SELECTOR,value = "em > a")                                 # 타이틀 정보 수집
         title = elements_title.text
-        print("title : {}".format(title), end = "")
+        print("title : {}".format(title), end = "")                                                                     # 제품 제목 출력
     except:
         print("", end = "")                                                                                                      # 오류 시 빈칸 입력
     try:
         elements_old_price = element_item.find_element(by=By.CSS_SELECTOR,value = "li.c_price > span")                  # 원가 정보 수집
         old_price= elements_old_price.text
-        print(", old_price : {}".format(old_price), end = "")    
+        print(", old_price : {}".format(old_price), end = "")                                                           # 원가 출력
     except:
         pass                                                                                                           # 오류 시 빈칸 입력
     try:
         elements_sale_price = element_item.find_element(by=By.CSS_SELECTOR,value = "li.d_price > span.sale")           # 변경 가격 정보 수집
         price = elements_sale_price.text
-        print(", price : {}".format(price), end = "")
+        print(", price : {}".format(price), end = "")                                                                  # 변경 가격 출력
     except:
         pass                                                                                                            # 오류 시 빈칸 입력
     
