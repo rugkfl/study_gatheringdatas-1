@@ -48,11 +48,7 @@ for element_item in elements_bundle:
         print("")
         pass
     pass
-    # print("title : {}, old_price : {}, sale_price : {}, ".format(title,old_price,sale_price), end= "")              # 상품 제목, 원가, 변경 가격 출력
-    # print("delivery : ", end ="")
-    # for i in range(len(delivery)):
-    #     print("{}" .format(delivery[i]), end=" ")                                                                   # 배송 방법 출력 
-    # print("")
+   
 
 
 browser.quit()                                      # - 브라우저 종료
