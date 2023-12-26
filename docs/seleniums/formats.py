@@ -1,6 +1,6 @@
 # * 웹 크롤링 동작
 from selenium import webdriver 
-
+import time
 # ChromeDriver 실행
 # Chrome WebDriver의 capabilities 속성 사용
 # capabilities = browser.capabilities
