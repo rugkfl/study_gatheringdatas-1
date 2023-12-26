@@ -30,8 +30,8 @@ capabilities = browser.capabilities
 pass
 
 # for page_number in [1,2,3,4,5,6]:           # page number
-for page_number in range(1,7):           # page number
-    url = "https://emart.ssg.com/disp/category.ssg?dispCtgId=6000215216&page={}".format(page_number)
+for page_number in range(1,11):           # page number
+    url = "https://www.coupang.com/np/campaigns/348?page={}".format(page_number)
     browser.get(url)                                     # - 주소 입력
     time.sleep(3)
     html = browser.page_source

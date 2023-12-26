@@ -23,7 +23,7 @@ browser = webdriver.Chrome(service = ChromeService(webdriver_manager_directory),
 capabilities = browser.capabilities
 
 pass
-browser.get("")                                     # - 주소 입력
+browser.get("https://www.jobkorea.co.kr/recruit/joblist?menucode=local&localorder=1#anchorHRCnt_4")                                     # - 주소 입력
 
                                                     # - 가능 여부에 대한 OK 받음
 pass
@@ -32,6 +32,14 @@ html = browser.page_source                          # - html 파일 받음(and �
 
 from selenium.webdriver.common.by import By          # - 정보 획득
 # browser.save_screenshot('./formats.png')           
-
+region_choice1_button = browser.find_element(by=By.CSS_SELECTOR,value="#devSearchForm > div.detailArea > div > div:nth-child(1) > dl.loc.circleType.dev-tab.dev-local.on > dd.ly_sub > div.ly_sub_cnt.colm2-ty2.clear > dl.detail_sec.barType > dd > div.nano-content.dev-main > ul > li:nth-child(1)")                       # 로그인 버튼 정보 수집
+region_choice1_button.click()          
+region_choice1_button = browser.find_element(by=By.CSS_SELECTOR,value="#devSearchForm > div.detailArea > div > div:nth-child(1) > dl.loc.circleType.dev-tab.dev-local.on > dd.ly_sub > div.ly_sub_cnt.colm2-ty2.clear > dl.detail_sec.barType > dd > div.nano-content.dev-main > ul > li:nth-child(2)")                       # 로그인 버튼 정보 수집
+region_choice1_button.click()          
+region_choice1_button = browser.find_element(by=By.CSS_SELECTOR,value="#devCndtDispArea > div > dl.listWrap.clear > dd.btnSet")                       # 로그인 버튼 정보 수집
+region_choice1_button.click()          
+time.sleep(5)
+for i in range():
+    pass
 
 browser.quit()                                      # - 브라우저 종료
