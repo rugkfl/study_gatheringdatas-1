@@ -42,6 +42,7 @@ from selenium.webdriver.common.keys import Keys
 element_body = browser.find_element(by=By.CSS_SELECTOR,value="body")
 previous_scrollHeight = 0
 while True:
+# for i in range(3):
     element_body.send_keys(Keys.END)
     current_scrollHeight = browser.execute_script("return document.body.scrollHeight")
     if previous_scrollHeight >= current_scrollHeight:
@@ -50,13 +51,33 @@ while True:
         previous_scrollHeight = current_scrollHeight
     time.sleep(3)
 pass
-user_name = element_body.find_elements(by=By.CSS_SELECTOR,value = "div.css-drz8qh.egj9y8a2")                    # 작성자 정보 추출
-grade = element_body.find_elements(by=By.CSS_SELECTOR,value = "div.css-31ods0.egj9y8a0")                        # 별점 점수 정보 추출
-content = element_body.find_elements(by=By.CSS_SELECTOR,value = "div.css-2occzs.egj9y8a1")                      # 내용 정보 추출
-for i in range(len(user_name)):                                                                                 # 데이터 데이스에 정보 전달
-    collection.insert_one({"작성자": user_name[i].text,                                                         
-                           "별점 점수": grade[i].text,
-                           "내용": content[i].text})
+user_list = element_body.find_elements(by=By.CSS_SELECTOR,value = "div.css-13j4ly.egj9y8a4")
+user_name_list = []
+grade_list = []
+content_list = []
+for user_item in user_list:
+    try:
+        user_name = user_item.find_element(by=By.CSS_SELECTOR,value = "div.css-drz8qh.egj9y8a2")                    # 작성자 정보 추출
+        str_user_name = user_name.text
+    except: 
+        str_user_name = ""
+    user_name_list.append(str_user_name)
+    try:
+        grade = user_item.find_element(by=By.CSS_SELECTOR,value = "div.css-31ods0.egj9y8a0")                        # 별점 점수 정보 추출
+        str_grade = grade.text
+    except:
+        str_grade = ""
+    grade_list.append(str_grade)
+    try:
+        content = user_item.find_element(by=By.CSS_SELECTOR,value = "div.css-2occzs.egj9y8a1")                      # 내용 정보 추출                                                                             # 데이터 데이스에 정보 전달
+        str_content = content.text
+    except:
+        str_content = ""
+    content_list.append(str_content)
+for i in range(len(user_list)):
+    collection.insert_one({"작성자": user_name_list[i],                                                         
+                            "별점 점수": grade_list[i],
+                            "내용": content_list[i]})
 
 pass
 browser.quit()                                      # - 브라우저 종료
