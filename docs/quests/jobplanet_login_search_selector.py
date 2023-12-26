@@ -28,3 +28,4 @@ element_login_button = browser.find_element(by=By.CSS_SELECTOR,value=" div > sec
 element_login_button.click()                                                                                                                        # 로그인 버튼 클릭
 pass
 browser.quit()                                      # - 브라우저 종료
+ 
