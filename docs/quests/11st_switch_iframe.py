@@ -43,13 +43,8 @@ while True:
         current_scrollHeight = browser.execute_script("return document.body.scrollHeight")
     except:                                                                                                      # 더보기 버튼 없을 시 반복문 종료
         break
-    # if previous_scrollHeight >= current_scrollHeight:                                                            # 기본 브라우저 높이가 더보기 버튼 클릭 후 브라우저 높이보다 같거나 클 경우 반복문 종료
-    #     break
-    # else:
-    #     previous_scrollHeight = current_scrollHeight
     time.sleep(3)
     pass
-# element_login_button = browser.find_element(by=By.CSS_SELECTOR,value="div > input.btn.btn-primary.btn-block.js-sign-in-button")
 pass
 from pymongo import MongoClient                                                                                     # DB에 접속
 mongo_client = MongoClient("mongodb://localhost:27017")
