@@ -40,29 +40,29 @@ collection_comments.delete_many({})
 
 from selenium.webdriver.common.by import By          # - 정보 획득
 for i in range(4):
-    companies = browser.find_elements(by=By.CSS_SELECTOR, value= "div.viewtype.catal_ty > ul > li > div > a")
+    companies = browser.find_elements(by=By.CSS_SELECTOR, value= "div.viewtype.catal_ty > ul > li > div > a")                   # 제품 찾기
     company = companies[i]
-    company.click()
+    company.click()                                                                                                             # 제품 클릭
     time.sleep(2)
     try:
-        element_title = browser.find_element(by=By.CSS_SELECTOR,value = "div.l_product_side_info > div> h1").text
+        element_title = browser.find_element(by=By.CSS_SELECTOR,value = "div.l_product_side_info > div> h1").text              # 제품명 찾기
     except NoSuchElementException:
         element_title = "" 
     try:
-        img_element = browser.find_element(by=By.CSS_SELECTOR,value = "#productImg > div > img")
+        img_element = browser.find_element(by=By.CSS_SELECTOR,value = "#productImg > div > img")                               # 제품 사진 링크 찾기
         element_img = img_element.get_attribute('src')
     except NoSuchElementException:
         element_img = ""
     try:
-        element_price_regular = browser.find_element(by=By.CSS_SELECTOR,value = "div:nth-child(1) > dd > del").text
+        element_price_regular = browser.find_element(by=By.CSS_SELECTOR,value = "div:nth-child(1) > dd > del").text           # 원가 찾기
     except NoSuchElementException:
         element_price_regular = ""
     try:
-        str_element_price_sale = browser.find_element(by=By.CSS_SELECTOR,value = "div.price_info > dd.price > strong > span.value").text
+        str_element_price_sale = browser.find_element(by=By.CSS_SELECTOR,value = "div.price_info > dd.price > strong > span.value").text  # 판매가 찾기
         element_price_sale = ("{}원".format(str_element_price_sale))
     except NoSuchElementException:
         element_price_sale = ""
-    collection_item.insert_one({"상품명": element_title,
+    collection_item.insert_one({"상품명": element_title,                                                                        # DB 전송
                            "이미지 링크": element_img,
                            "원가": element_price_regular,
                            "판매가": element_price_sale})
