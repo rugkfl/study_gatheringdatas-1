@@ -66,8 +66,8 @@ for i in range(4):
         element_item_content_name = browser.find_elements(by=By.CSS_SELECTOR,value = "#tabpanelDetail1 > table > tbody > tr > th")  # 상품정보 제목 찾기
         element_item_content = browser.find_elements(by=By.CSS_SELECTOR,value = "#tabpanelDetail1 > table > tbody > tr > td")  # 상품정보 내용 찾기
         element_item_contents={}
-        for i in range(len(element_item_content_name)):                                                                         # 상품 정보의 제목과 내용을 dictionary 지정
-            element_item_contents[element_item_content_name[i].text] = element_item_content[i].text
+        for j in range(len(element_item_content_name)):                                                                         # 상품 정보의 제목과 내용을 dictionary 지정
+            element_item_contents[element_item_content_name[j].text] = element_item_content[j].text
         pass
     except NoSuchElementException:
         element_price_content = ""
@@ -82,7 +82,7 @@ for i in range(4):
     previous_scrollHeight = 0                                                                   # 기본 브라우저 높이 변수 지정
     time.sleep(3)
     # while True:
-    for i in range(1):
+    for j in range(1):
         try:                                                                                                         # 더보기 버튼 클릭 시도
             element_click = browser.find_element(by=By.CSS_SELECTOR,value = "#review-list-page-area > div > button") # 더보기 버튼 정보 추출
             element_click.click()                                                                                    # 더보기 버튼 클릭
@@ -126,8 +126,8 @@ for i in range(4):
         except:                                                                                                         # 없을 경우 공백 입력
             content = ""                                                                                                
         pass
-        element_id_list = list(collection_item.find({},{"_id":1}))                                                      # 상품 id 가져오기
-        element_id = element_id_list[0]["_id"]                                                                              
+        element_id = collection_item.find({},{"_id":1})[i]["_id"]                                                    # 상품 id 가져오기
+
         pass
 
         collection_comments.insert_one({"상품 ID": element_id,                                                           # db에 전송
