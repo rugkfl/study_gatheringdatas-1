@@ -2,6 +2,7 @@
 from selenium import webdriver 
 from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.support.ui import Select
 webdriver_manager_directory = ChromeDriverManager().install()
 import time
 # ChromeDriver 실행
@@ -23,7 +24,7 @@ browser = webdriver.Chrome(service = ChromeService(webdriver_manager_directory),
 capabilities = browser.capabilities
 
 pass
-browser.get("")                                     # - 주소 입력
+browser.get("https://getbootstrap.com/docs/5.3/examples/checkout/")                                     # - 주소 입력
 
                                                     # - 가능 여부에 대한 OK 받음
 pass
@@ -32,12 +33,12 @@ html = browser.page_source                          # - html 파일 받음(and �
 
 from selenium.webdriver.common.by import By          # - 정보 획득
 # browser.save_screenshot('./formats.png')           
-selector_element = "#country"
-element_country = browser.find_element(by=By.CSS_SELECTOR,value=selector_element)
+selector_element = '#country'
+element_country = browser.find_element(by=By.CSS_SELECTOR, value=selector_element)
 Select(element_country).select_by_index(1)
 # 주 selectbox 선택
-selector_element = "#state"
-browser.find_element(by=By.CSS_SELECTOR,value=selector_element)
+selector_element = '#state'
+element_state = browser.find_element(by=By.CSS_SELECTOR, value=selector_element)
 Select(element_state).select_by_index(1)
 
 
