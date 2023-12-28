@@ -63,10 +63,10 @@ for i in range(4):
     except NoSuchElementException:
         element_price_sale = ""
     try:
-        element_item_content_name = browser.find_elements(by=By.CSS_SELECTOR,value = "#tabpanelDetail1 > table > tbody > tr > th")  # 상품정보 이름 찾기
+        element_item_content_name = browser.find_elements(by=By.CSS_SELECTOR,value = "#tabpanelDetail1 > table > tbody > tr > th")  # 상품정보 제목 찾기
         element_item_content = browser.find_elements(by=By.CSS_SELECTOR,value = "#tabpanelDetail1 > table > tbody > tr > td")  # 상품정보 내용 찾기
         element_item_contents={}
-        for i in range(len(element_item_content_name)):
+        for i in range(len(element_item_content_name)):                                                                         # 상품 정보의 제목과 내용을 dictionary 지정
             element_item_contents[element_item_content_name[i].text] = element_item_content[i].text
         pass
     except NoSuchElementException:
@@ -75,7 +75,7 @@ for i in range(4):
                            "이미지 링크": element_img,
                            "원가": element_price_regular,
                            "판매가": element_price_sale})
-    collection_item.update_one({"상품명": element_title},{"$set":element_item_contents},upsert=True)
+    collection_item.update_one({"상품명": element_title},{"$set":element_item_contents},upsert=True)                        # 상품 정보 dictionary DB에 추가
     pass
     browser.switch_to.frame('ifrmReview')                                                       # ifrmReview frame으로 변경
     element_body = browser.find_element(by=By.CSS_SELECTOR,value="body")
@@ -126,13 +126,13 @@ for i in range(4):
         except:                                                                                                         # 없을 경우 공백 입력
             content = ""                                                                                                
         pass
-        element_id_list = list(collection_item.find({},{"_id":1}))
-        element_id = element_id_list[0]["_id"]
+        element_id_list = list(collection_item.find({},{"_id":1}))                                                      # 상품 id 가져오기
+        element_id = element_id_list[0]["_id"]                                                                              
         pass
 
-        collection_comments.insert_one({"상품 ID": element_id,
+        collection_comments.insert_one({"상품 ID": element_id,                                                           # db에 전송
                                         "상품명": element_title,
-                                        "작성자": user_name,                                                                     # db에 전송
+                                        "작성자": user_name,                                                                    
                             "선택 옵션": choice_option,
                             "별점": rating,
                             "내용": content})
