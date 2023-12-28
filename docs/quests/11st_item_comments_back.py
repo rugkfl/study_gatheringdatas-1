@@ -23,7 +23,7 @@ browser = webdriver.Chrome(service = ChromeService(webdriver_manager_directory),
 capabilities = browser.capabilities
 
 pass
-url = 'https://www.11st.co.kr/browsing/DealBest.tmall?method=getShockingDealBestMain&dispCtgrNo=947158&dbCacheUse=N'
+url = 'https://www.11st.co.kr/browsing/DealBest.tmall?method=getShockingDealBestMain'
 browser.get(url)                                     # - 주소 입력
 
                                                     # - 가능 여부에 대한 OK 받음
@@ -62,10 +62,21 @@ for i in range(4):
         element_price_sale = ("{}원".format(str_element_price_sale))
     except NoSuchElementException:
         element_price_sale = ""
+    try:
+        element_item_content_name = browser.find_elements(by=By.CSS_SELECTOR,value = "#tabpanelDetail1 > table > tbody > tr > th")  # 상품정보 이름 찾기
+        element_item_content = browser.find_elements(by=By.CSS_SELECTOR,value = "#tabpanelDetail1 > table > tbody > tr > td")  # 상품정보 내용 찾기
+        element_item_contents={}
+        for i in range(len(element_item_content_name)):
+            element_item_contents[element_item_content_name[i].text] = element_item_content[i].text
+        pass
+    except NoSuchElementException:
+        element_price_content = ""
     collection_item.insert_one({"상품명": element_title,                                                                        # DB 전송
                            "이미지 링크": element_img,
                            "원가": element_price_regular,
                            "판매가": element_price_sale})
+    collection_item.update_one({"상품명": element_title},{"$set":element_item_contents},upsert=True)
+    pass
     browser.switch_to.frame('ifrmReview')                                                       # ifrmReview frame으로 변경
     element_body = browser.find_element(by=By.CSS_SELECTOR,value="body")
     previous_scrollHeight = 0                                                                   # 기본 브라우저 높이 변수 지정
@@ -115,11 +126,17 @@ for i in range(4):
         except:                                                                                                         # 없을 경우 공백 입력
             content = ""                                                                                                
         pass
-        collection_comments.insert_one({"상품명": element_title,
+        element_id_list = list(collection_item.find({},{"_id":1}))
+        element_id = element_id_list[0]["_id"]
+        pass
+
+        collection_comments.insert_one({"상품 ID": element_id,
+                                        "상품명": element_title,
                                         "작성자": user_name,                                                                     # db에 전송
                             "선택 옵션": choice_option,
                             "별점": rating,
                             "내용": content})
+    pass
     browser.back()                  # 제품 리스트로 이동
     time.sleep(2)                      # 
     pass
