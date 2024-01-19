@@ -1,9 +1,9 @@
-# 데이터명 : 한국주택금융공사_전세자금대출 금리 정보
-# from https://www.data.go.kr/iim/api/selectAPIAcountView.do
+# 데이터명 :  조달청_나라장터 공공데이터개방표준서비스
+# from https://www.data.go.kr/data/15058815/openapi.do
 import requests 
 
 # url 주소 변수 지정
-url = 'http://apis.data.go.kr/1230000/PubDataOpnStdService/getDataSetOpnStdBidPblancInfo?serviceKey=ow0djIIbtYKcXjahX81pjlVfuA8kUj6DBQkALWCEeCXNuir3R0%2BLMOTTuhmW9Ms7R%2FAVfqb7cGIAazhHFttnPw==&pageNo=1&numOfRows=10&type=json&bidNtceBgnDt=201712010000&bidNtceEndDt=201712312359'
+url = 'http://apis.data.go.kr/1230000/PubDataOpnStdService/getDataSetOpnStdBidPblancInfo?serviceKey=ZYK0bMGPmpujibjhabHiPWFvFzI%2FxcgntGutROQzYCLasxlwqqEtn4KO5lAeieJ8i35RbVnOnRer7tfV3A%2FwGA%3D%3D&pageNo=1&numOfRows=10&type=json&bidNtceBgnDt=201712010000&bidNtceEndDt=201712312359'
 
 pass
 # respose라는 변수로 받음

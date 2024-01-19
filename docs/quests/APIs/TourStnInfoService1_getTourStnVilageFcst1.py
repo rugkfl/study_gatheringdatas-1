@@ -1,9 +1,9 @@
-# 데이터명 : 한국주택금융공사_전세자금대출 금리 정보
+# 데이터명 : 기상청_관광코스별 관광지 상세 날씨 조회서비스
 # from https://www.data.go.kr/iim/api/selectAPIAcountView.do
 import requests 
 
 # url 주소 변수 지정
-url = 'http://apis.data.go.kr/1360000/TourStnInfoService1/getTourStnVilageFcst1?serviceKey=ow0djIIbtYKcXjahX81pjlVfuA8kUj6DBQkALWCEeCXNuir3R0%2BLMOTTuhmW9Ms7R%2FAVfqb7cGIAazhHFttnPw%3D%3D&pageNo=1&numOfRows=10&dataType=JSON&CURRENT_DATE=2019122010&HOUR=24&COURSE_ID=1'
+url = 'http://apis.data.go.kr/1360000/TourStnInfoService1/getCityTourClmIdx1?serviceKey=ZYK0bMGPmpujibjhabHiPWFvFzI%2FxcgntGutROQzYCLasxlwqqEtn4KO5lAeieJ8i35RbVnOnRer7tfV3A%2FwGA%3D%3D&pageNo=1&numOfRows=10&dataType=JSON&CURRENT_DATE=2018123110&DAY=3&CITY_AREA_ID=5013000000'
 
 pass
 # respose라는 변수로 받음
