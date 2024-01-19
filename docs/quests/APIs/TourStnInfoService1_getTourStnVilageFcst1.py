@@ -1,4 +1,4 @@
-# 데이터명 : 한국주택금융공사_전세자금대출 금리 정보
+# 데이터명 : 기상청_관광코스별 관광지 상세 날씨 조회서비스
 # from https://www.data.go.kr/iim/api/selectAPIAcountView.do
 import requests 
 
