@@ -1,5 +1,5 @@
-# 데이터명 :  조달청_나라장터 공공데이터개방표준서비스
-# from https://www.data.go.kr/data/15058815/openapi.do
+# 데이터명 : 한국주택금융공사_전세자금대출 금리 정보
+# from https://www.data.go.kr/iim/api/selectAPIAcountView.do
 import requests 
 
 # url 주소 변수 지정

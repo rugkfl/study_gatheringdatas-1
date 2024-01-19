@@ -6,14 +6,14 @@ import requests
 url = 'http://apis.data.go.kr/B551408/rent-loan-rate-info/rate-list'
 
 ## parameters 변수 지정
-params = {'serviceKey':'ow0djIIbtYKcXjahX81pjlVfuA8kUj6DBQkALWCEeCXNuir3R0%2BLMOTTuhmW9Ms7R%2FAVfqb7cGIAazhHFttnPw==',
+params1 = {'serviceKey':'ow0djIIbtYKcXjahX81pjlVfuA8kUj6DBQkALWCEeCXNuir3R0%2BLMOTTuhmW9Ms7R%2FAVfqb7cGIAazhHFttnPw==',
           'pageNo':1,
           'numOfRows':30,
           'dataType':'JSON'
           }
 
 # url과 parameters를 response라는 변수로 받음 
-response = requests.get(url, params=params) 
+response = requests.get(url, params=params1) 
 
 # # url 주소에 parameters가 들어간 링크를 변수로 지정
 # url = 'http://apis.data.go.kr/B551408/rent-loan-rate-info/rate-list?serviceKey=ow0djIIbtYKcXjahX81pjlVfuA8kUj6DBQkALWCEeCXNuir3R0%2BLMOTTuhmW9Ms7R%2FAVfqb7cGIAazhHFttnPw%3D%3D&pageNo=1&numOfRows=30&dataType=JSON'
