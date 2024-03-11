@@ -1,31 +1,39 @@
 # * 웹 크롤링 동작
-from selenium import webdriver 
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service as ChromeService
+from webdriver_manager.chrome import ChromeDriverManager
+webdriver_manager_directory = ChromeDriverManager().install()
+browser = webdriver.Chrome(service=ChromeService(webdriver_manager_directory))
 
 # ChromeDriver 실행
+
 # Chrome WebDriver의 capabilities 속성 사용
-# capabilities = browser.capabilities
+capabilities = browser.capabilities
 
-browser = webdriver.Chrome()                                                 # - chrome browser 열기
+# - 주소 https://www.w3schools.com/ 입력
+browser.get("https://www.jobplanet.co.kr/users/sign_in?_nav=gb")
 
+# - 가능 여부에 대한 OK 받음
 pass
-browser.get("https://www.jobplanet.co.kr/users/sign_in?_nav=gb")             # - 주소 입력
 
-                                                                             # - 가능 여부에 대한 OK 받음
-pass
-html = browser.page_source                                                  # - html 파일 받음(and 확인)
-# print(html)
+# - html 파일 받음(and 확인)
+html = browser.page_source
 
-from selenium.webdriver.common.by import By                                 # - 정보 획득
-# browser.save_screenshot('./formats.png')           
-element_login_field = browser.find_element(by=By.CSS_SELECTOR,value="#user_email")                                                                  # 이메일 입력란 정보 수집
-email = input("E-MAIL : ")
-element_login_field.send_keys(email)                                                                                                  # 이메일 웹페이지에 전송
 
-element_password = browser.find_element(by=By.CSS_SELECTOR,value="#user_password")                                                                  # 비밀번호 입력란 정보 수집
-password = input("PASSWORD : ")                                                                                                                      # 비밀번호 입력
-element_password.send_keys(password)                                                                                                                # 웹페이지에 전송
-element_login_button = browser.find_element(by=By.CSS_SELECTOR,value=" div > section.section_email.er_r > fieldset > button")                       # 로그인 버튼 정보 수집
-element_login_button.click()                                                                                                                        # 로그인 버튼 클릭
-pass
-browser.quit()                                      # - 브라우저 종료
- 
+# - 정보 획득
+from selenium.webdriver.common.by import By
+
+# 로그인 이메일
+element_login_field = browser.find_element(by=By.CSS_SELECTOR, value="#user_email")
+element_login_field.send_keys("kimgyoungha61@gmail.com")
+
+# 로그인 비밀번호
+element_password_field = browser.find_element(by=By.CSS_SELECTOR, value="#user_password")
+element_password_field.send_keys("") # 브레이크 걸고 직접 넣어서 실행함
+
+# 로그인 버튼
+element_login_button = browser.find_element(by=By.CSS_SELECTOR, value="  div > section.section_email.er_r > fieldset > button")
+element_login_button.click()
+
+# 브라우저 종료
+browser.quit()

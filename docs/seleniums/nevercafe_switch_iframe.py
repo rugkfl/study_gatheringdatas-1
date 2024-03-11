@@ -12,25 +12,29 @@ import time
 capabilities = browser.capabilities
 
 # - 주소 https://www.w3schools.com/ 입력
-url = "https://play.google.com/store/search?q=%ED%97%AC%EC%8A%A4%EC%BC%80%EC%96%B4%EC%95%B1&c=apps&hl=ko-KR&pli=1"
-browser.get(url)
+browser.get("https://cafe.naver.com/peopledisc")
 
 # - 가능 여부에 대한 OK 받음
 pass
 
+# - html 파일 받음(and 확인)
+html = browser.page_source
+print(html)
+
 # - 정보 획득
 from selenium.webdriver.common.by import By
+#menuLink84 : 병원 진료 후기 메뉴 클릭
+# element_click = browser.find_element(by=By.CSS_SELECTOR, value="#menuLink84").click()
+element_click = browser.find_element(by=By.CSS_SELECTOR, value="#menuLink84")
+element_click.click()
 
-element_companies = browser.find_elements(by=By.CSS_SELECTOR, value="div > a.Si640c.Gy4nib")
-for company in element_companies :
-    company.click()
-    time.sleep(1) # 화면 완성 term
-    # 앱 상세 제목 : div > h1
-    element_title = browser.find_element(by=By.CSS_SELECTOR, value="div > h1")
-    print("App company Name : {}".format(element_title.text))
-    
-    browser.back() # 제품 리스트로 이동
-    time.sleep(1) # 화면 완성 term
+# iframe으로 전환
+browser.switch_to.frame('cafe_main')
+
+pass
+#main-area > div:nth-child(4) > table > tbody > tr : 해당 리스트
+cafe_list = browser.find_elements(by=By.CSS_SELECTOR, value="#main-area > div:nth-child(4) > table > tbody > tr")
+pass
 
 # 브라우저 종료
 browser.quit()
